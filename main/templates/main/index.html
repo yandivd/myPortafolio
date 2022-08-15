@@ -573,17 +573,17 @@
             {% csrf_token %} <!---Token de seguridad siempre necesario--->
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="name">Nombre</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+                    <label for="name">Nombre</label>
+                  <input type="text" name="name" class="form-control" id="name" required placeholder="Ej: Maria Gonzales">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="name">Correo</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Ej: ejemplo@gmail.com" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="name">Asunto</label>
-                <input type="text" class="form-control" name="asunto" id="subject" required>
+                <input type="text" class="form-control" name="asunto" id="subject" placeholder="Ej: Ayuda" required>
               </div>
               <div class="form-group">
                 <label for="name">Mensaje</label>
