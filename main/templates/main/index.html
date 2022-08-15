@@ -548,18 +548,17 @@
 {#                <h3>John Larson</h3>#}
 {#                <h4>Entrepreneur</h4>#}
 {#              </div>#}
-{#            </div><!-- End testimonial item -->#}
-
-          </div>
+          </div>{#            </div><!-- End testimonial item -->#}
           <div class="swiper-pagination"></div>
         </div>
-
       </div>
     </section><!-- End Testimonials Section -->
 
+    <p>Quieres dejar tu experiencia? <a href="#">Clic Aqui</a></p>
+
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-      <div class="container">
+      <div class="container align-items-center">
 
         <div class="section-title">
           <h2>Contáctame</h2>
@@ -567,8 +566,30 @@
         </div>
 
         <div class="row" data-aos="fade-in">
+            <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Localización:</h4>
+                <p>Calle 56, #2504 /25 & 27 Artemisa, Cuba</p>
+              </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>yandivd@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Telf:</h4>
+                <p>+53 54545068</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg mt-5 mt-lg-0 d-flex align-items-stretch">
                 <form action="" class="form-floating form" id="formulario_contacto" method="POST"> <!---Method post envia los datoes--->
             {% csrf_token %} <!---Token de seguridad siempre necesario--->
               <div class="row">
