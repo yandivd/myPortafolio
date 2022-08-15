@@ -26,3 +26,16 @@ class Testimoni(models.Model):
     class Meta:
         verbose_name = 'Testimonio'
         verbose_name_plural = 'Testimonios'
+
+class Contacto(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    asunto = models.CharField(max_length=20)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'Contacto'
+        verbose_name_plural = 'Contactos'

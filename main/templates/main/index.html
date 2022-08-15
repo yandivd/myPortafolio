@@ -226,7 +226,7 @@
 
         <div class="section-title">
           <h2>Resumen</h2>
-          <p>Desde temprana edad mostre interes en las computadoras. Y siempre me gustaron los desafios de logica, lo cual me hizo empezar a entrenar mis habilidades en la programacion.</p>
+          <p>Desde temprana edad mostré interés en las computadoras. Y siempre me gustaron los desafios de logica, lo cual me hizo empezar a entrenar mis habilidades en la programacion.</p>
         </div>
 
         <div class="row">
@@ -562,14 +562,15 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Contáctame</h2>
+          <p>Tienes alguna duda? No dudes en ponerte en contacto conmigo. Con gusto te responderé.</p>
         </div>
 
         <div class="row" data-aos="fade-in">
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <form action="" class="form-floating form" id="formulario_contacto" method="POST"> <!---Method post envia los datoes--->
+            {% csrf_token %} <!---Token de seguridad siempre necesario--->
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -582,18 +583,13 @@
               </div>
               <div class="form-group">
                 <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
+                <input type="text" class="form-control" name="asunto" id="subject" required>
               </div>
               <div class="form-group">
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center mt-3"><button type="submit" class="btn btn-primary">Enviar</button></div>
             </form>
           </div>
 

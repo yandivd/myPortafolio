@@ -7,6 +7,10 @@ class ProyectoAdmin(admin.ModelAdmin):
 class TestimonioAdmin(admin.ModelAdmin):
     list_display = 'nombre', 'ocupacion', 'image', 'texto'
 
+class ContactoAdmin(admin.ModelAdmin):
+    list_display = 'name','email','asunto','message'
+
 # Register your models here.
 admin.site.register(Proyecto, ProyectoAdmin)
 admin.site.register(Testimoni, TestimonioAdmin)
+admin.site.register(Contacto, ContactoAdmin)
