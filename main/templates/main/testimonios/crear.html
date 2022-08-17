@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="row skills-content">
 
-</body>
-</html>
+          <div class="col-lg-6" data-aos="fade-up">
+          <div class="col-lg-12" data-aos="fade-right">
+    <form action="." method="POST">
+        <div class="container">
+        {{ form.nombre }}
+        {{ form.ocupacion }}
+        {{ form.image }}
+        {{ form.texto }}
+            </div>
+    </form>
+              </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}
