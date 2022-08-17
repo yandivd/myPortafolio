@@ -1,11 +1,23 @@
 from django.db import models
 
 # Create your models here.
+
+class Categoria(models.Model):
+    nombre=models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name='Categoria'
+        verbose_name_plural='Categorias'
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=100)
     image = models.ImageField(upload_to='proyectos')
     link = models.CharField(max_length=400)
-    categoria = models.CharField(max_length=20)
+    # categoria = models.CharField(max_length=20)
+    # categoria = models.ManyToManyField(Categoria)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
