@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
     proyectos = Proyecto.objects.all()
     testimonios = Testimoni.objects.all()
-    for i in testimonios:
-        print(i)
     data={
         'proyectos': proyectos,
         'testimonios': testimonios,
@@ -16,6 +15,7 @@ def index(request):
     if request.method == 'POST':
         form = ContactoForm(data=request.POST)
         if form.is_valid():
+            messages.success(request, "Gracias por contactarnos")
             form.save()
             return redirect(to='index')
         else:
