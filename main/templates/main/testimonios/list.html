@@ -52,10 +52,10 @@
                         <td style="width: 150px;">{{i.ocupacion}}</td>
                         <td style="width: 150px;">{{i.texto}}</td>
                         <td>
-                <a href="#" type="button" class="btn btn-success">
+                <a href="#" onclick="aceptarTestimonio({{i.id}})" type="button" class="btn btn-success">
                     <i class="fas fa-check"></i>
                 </a>
-                <a href="#" type="button" class="btn btn-danger">
+                <a href="#" onclick="eliminarTestimonio({{i.id}})" type="button" class="btn btn-danger">
                     <i class="fas fa-trash-alt"></i>
                 </a>
                         </td>
@@ -72,6 +72,42 @@
      $(document).ready( function () {
             $('#myTable').DataTable();
     } );
+
+    function aceptarTestimonio(id){
+        Swal.fire({
+            "title": "Estas Seguro?",
+            "text": "Esta accion no se puede deshacer",
+            "icon": "question",
+            "showCancelButton": true,
+            "cancelButtonText": "No, Cancelar",
+            "confirmButtonText": "Si, Aceptar Testimonio",
+            "reverseButtons": true,
+            "confirmButtonColor": "#cc1417"
+                })
+            .then(function(result){
+                if (result.isConfirmed){
+                    window.location.href = "/aceptar_testimonio/"+id+"/"
+                }
+            })
+        }
+
+    function eliminarTestimonio(id){
+        Swal.fire({
+            "title": "Estas Seguro?",
+            "text": "Esta accion no se puede deshacer",
+            "icon": "question",
+            "showCancelButton": true,
+            "cancelButtonText": "No, Cancelar",
+            "confirmButtonText": "Si, Eliminar Testimonio",
+            "reverseButtons": true,
+            "confirmButtonColor": "#cc1417"
+                })
+            .then(function(result){
+                if (result.isConfirmed){
+                    window.location.href = "/eliminar_testimonio/"+id+"/"
+                }
+            })
+        }
   </script>
 </body>
 </html>

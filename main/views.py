@@ -31,6 +31,13 @@ class TestListView(ListView):
     model = Testimoni
     template_name = 'main/testimonios/list.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['object_list'] = Testimoni.objects.all().filter(estado="pending")
+
+        return context
+
 class TestimonioCreateView(CreateView):
     model = Testimoni
     form_class = TestimonioFOrm
@@ -53,3 +60,14 @@ class TestimonioCreateView(CreateView):
             messages.error(request, "Formulario contiene datos no validos")
             return redirect('index')
 
+def aceptarTestimonio(request,id):
+    testimonio = Testimoni.objects.get(id=id)
+    testimonio.estado = "check"
+    testimonio.save()
+    return redirect(to='listado_testimonios')
+
+def eliminarTestimonio(request,id):
+    testimonio = Testimoni.objects.get(id=id)
+    print(testimonio)
+    testimonio.delete()
+    return redirect(to='listado_testimonios')
