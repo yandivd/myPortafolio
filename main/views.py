@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from .models import *
 from .forms import *
@@ -27,4 +27,6 @@ def index(request):
 
     return render(request, 'main/index.html', data)
 
-
+class TestListView(ListView):
+    model = Testimoni
+    template_name = 'main/testimonios/list.html'
