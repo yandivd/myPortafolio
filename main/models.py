@@ -31,6 +31,7 @@ class Testimoni(models.Model):
     ocupacion = models.CharField(max_length=100)
     image = models.ImageField(upload_to='testimonios', blank=True, null=True)
     texto = models.TextField()
+    estado = models.CharField(max_length=10)
 
     def __str__(self):
         return self.nombre

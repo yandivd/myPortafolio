@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="." method="post" id="">
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="bi bi-plus-circle "></i>
+              Agregar Testimonio
+            </h3>
+        </div>
+        <div class="card-body ">
+            {% csrf_token %}
+            <div class=" form-group form-card text-center">
+                 <label>Imagen: </label>
+                <br>
+                {{form.image}}
+                <br><br><br>
+
+                <label>Nombre: </label>
+                <br>
+                {{form.nombre}}
+                <br><br><br>
+
+                <label>Ocupacion: </label><br>
+                {{form.ocupacion}}
+                <br><br><br>
+
+                <label>Testimonio: </label><br>
+                {{form.texto}}
+            </div>
+        </div>
+
+    </div>
+    <div class="  card-footer mt-3 px-5 mb-3">
+        <button type="submit" class="  btn btn-primary btn-flat btnTest">
+            <i class="bi bi-cassette"></i> Guardar Testimonio
+        </button>
+        <a href="{% url 'index' %}">
+            <button type="button" class=" btn btn-danger">
+                <i class="bi bi-x"></i> Cancelar
+            </button>
+        </a>
+    </div>
+    </div>
+</form>
+</body>
+</html>

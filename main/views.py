@@ -9,7 +9,7 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
     proyectos = Proyecto.objects.all()
-    testimonios = Testimoni.objects.all()
+    testimonios = Testimoni.objects.all().filter(estado="check")
     data={
         'proyectos': proyectos,
         'testimonios': testimonios,
@@ -30,3 +30,26 @@ def index(request):
 class TestListView(ListView):
     model = Testimoni
     template_name = 'main/testimonios/list.html'
+
+class TestimonioCreateView(CreateView):
+    model = Testimoni
+    form_class = TestimonioFOrm
+    template_name = 'main/testimonios/create.html'
+    success_url = reverse_lazy('index')
+
+    def post(self, request, *args, **kwargs):
+        formulario = TestimonioFOrm(data=request.POST)
+        estado="pending"
+        if formulario.is_valid():
+            testi = Testimoni(nombre=formulario.cleaned_data['nombre'],
+                              ocupacion=formulario.cleaned_data['ocupacion'],
+                              image=formulario.cleaned_data['image'],
+                              texto=formulario.cleaned_data['texto'],
+                              estado=estado)
+            testi.save()
+            messages.success(request, "Muchas gracias por compartir su testimonio, una vez sea revisado se hara publico")
+            return redirect('index')
+        else:
+            messages.error(request, "Formulario contiene datos no validos")
+            return redirect('index')
+
