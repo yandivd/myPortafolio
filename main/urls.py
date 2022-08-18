@@ -11,4 +11,5 @@ urlpatterns = [
     path('aceptar_testimonio/<id>/', aceptarTestimonio, name='aceptar_testimonio'),
     path('eliminar_testimonio/<id>/', eliminarTestimonio, name='eliminar_testimonio'),
 ]
-urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
