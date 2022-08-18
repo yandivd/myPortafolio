@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -39,6 +40,12 @@ class Testimoni(models.Model):
     class Meta:
         verbose_name = 'Testimonio'
         verbose_name_plural = 'Testimonios'
+
+    def get_image(self):
+        if self.image:
+            return '{}{}'.format(settings.MEDIA_URL, self.image)
+        else:
+            return '{}{}'.format(settings.STATIC_URL, 'img/empty.png')
 
 class Contacto(models.Model):
     name = models.CharField(max_length=50)

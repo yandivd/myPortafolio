@@ -51,7 +51,9 @@
                     <tr>
                         <td style="width: 20px;">{{i.nombre}}</td>
                         <td style="width: 150px;">{{i.ocupacion}}</td>
-                        <td>{{i.imagel}}</td>
+                        <td>
+                            <img src="{{i.get_image}}" alt="" class="img-fluid d-block mx-auto" style="width: 40px; height:40px;">
+                        </td>
                         <td style="width: 150px;">{{i.texto}}</td>
                         <td>
                 <a href="#" onclick="aceptarTestimonio({{i.id}})" type="button" class="btn btn-success">

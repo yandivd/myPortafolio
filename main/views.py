@@ -48,6 +48,9 @@ class TestimonioCreateView(CreateView):
         formulario = TestimonioFOrm(data=request.POST)
         estado="pending"
         if formulario.is_valid():
+            image2=formulario.cleaned_data['image']
+            print(image2)
+            print(formulario.cleaned_data['image'])
             testi = Testimoni(nombre=formulario.cleaned_data['nombre'],
                               ocupacion=formulario.cleaned_data['ocupacion'],
                               image=formulario.cleaned_data['image'],
