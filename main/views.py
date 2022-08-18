@@ -27,10 +27,4 @@ def index(request):
 
     return render(request, 'main/index.html', data)
 
-class TestimonioCreateView(CreateView):
-    model = Testimoni
-    form_class = TestimonioForm
-    template_name = 'main/testimonios/crear.html'
-    success_url = reverse_lazy('index')
-
 
