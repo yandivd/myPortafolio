@@ -1,5 +1,7 @@
 from django.urls import path, include
 from .views import index, TestListView, TestimonioCreateView, aceptarTestimonio, eliminarTestimonio
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', index, name='index'),
@@ -9,3 +11,4 @@ urlpatterns = [
     path('aceptar_testimonio/<id>/', aceptarTestimonio, name='aceptar_testimonio'),
     path('eliminar_testimonio/<id>/', eliminarTestimonio, name='eliminar_testimonio'),
 ]
+urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
