@@ -18,7 +18,7 @@ def index(request):
     if request.method == 'POST':
         form = ContactoForm(data=request.POST)
         if form.is_valid():
-            messages.success(request, "Gracias por contactarnos")
+            messages.success(request, "Gracias por contactarme")
             form.save()
             return redirect(to='index')
         else:
