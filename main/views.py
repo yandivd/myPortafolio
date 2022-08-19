@@ -46,15 +46,15 @@ class TestimonioCreateView(CreateView):
 
     def post(self, request, *args, **kwargs):
         formulario = TestimonioFOrm(data=request.POST)
+        #imagen= request.FILES
+        image=request.FILES
+        print(image.values())
         estado="pending"
         if formulario.is_valid():
-            image2=formulario.cleaned_data['image']
-            print(image2)
-            print(formulario.cleaned_data['image'])
             testi = Testimoni(nombre=formulario.cleaned_data['nombre'],
                               ocupacion=formulario.cleaned_data['ocupacion'],
-                              image=formulario.cleaned_data['image'],
                               texto=formulario.cleaned_data['texto'],
+                              image=image['image'],
                               estado=estado)
             testi.save()
             messages.success(request, "Muchas gracias por compartir su testimonio, una vez sea revisado se hara publico")
