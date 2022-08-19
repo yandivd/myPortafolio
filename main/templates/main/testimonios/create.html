@@ -12,51 +12,56 @@
   <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
 </head>
 <body>
 
 <form action="" method="post" enctype="multipart/form-data">
-    <div class="card card-default mt-3">
-        <div class="card-header">
-            <h3 class="card-title mt-3">
-                <i class="bi bi-plus-circle "></i>
-              Agregar Testimonio
-            </h3>
-        </div>
-        <div class="card-body ">
-            {% csrf_token %}
-            <div class=" form-group form-card text-center">
-                 <label>Imagen: </label>
-                <br>
-                {{form.image}}
-                <br><br><br>
+    <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Dejar mi testimonio</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="exampleInputEmail1" placeholder="Nombre">
+                  </div>
+                  <div class="form-group">
+                    <label>Ocupacion</label>
+                    <input type="input" class="form-control" name="ocupacion" placeholder="Ocupacion">
+                  </div>
+                  <div class="form-group">
+                    <label>Foto</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image">
+                        <label class="custom-file-label">Escoja una foto</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                        <label>Testimonio</label>
+                        <textarea class="form-control" rows="3" placeholder="De su opinion acerca de mi" name="texto"></textarea>
+                      </div>
+                <!-- /.card-body -->
 
-                <label>Nombre: </label>
-                <br>
-                {{form.nombre}}
-                <br><br><br>
-
-                <label>Ocupacion: </label><br>
-                {{form.ocupacion}}
-                <br><br><br>
-
-                <label>Testimonio: </label><br>
-                {{form.texto}}
-            </div>
-        </div>
-
-    </div>
-    <div class="  card-footer mt-3 px-5 mb-3">
-        <button type="submit" class="  btn btn-primary btn-flat btnTest">
-            <i class="bi bi-cassette"></i> Guardar Testimonio
-        </button>
-        <a href="{% url 'index' %}">
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">
+                      <i class="bi bi-cassette"></i> Guardar Testimonio
+                  </button>
+                     <a href="{% url 'index' %}">
             <button type="button" class=" btn btn-danger">
                 <i class="bi bi-x"></i> Cancelar
             </button>
         </a>
-    </div>
-    </div>
-</form>
+                </div>
+              </form>
+            </div>
+
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<script src="{% static 'dist/js/demo.js' %}"></script>
 </body>
 </html>
