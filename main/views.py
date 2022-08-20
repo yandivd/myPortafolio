@@ -38,6 +38,10 @@ class TestListView(ListView):
 
         return context
 
+class ContactoListView(ListView):
+    model = Contacto
+    template_name = 'main/contactos/list.html'
+
 class TestimonioCreateView(CreateView):
     model = Testimoni
     form_class = TestimonioFOrm
