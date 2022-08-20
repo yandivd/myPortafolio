@@ -49,15 +49,15 @@
                 <tbody>
                     {% for i in object_list %}
                     <tr>
-                        <td style="width: 20px;">{{i.name}}</td>
-                        <td style="width: 150px;">{{i.asunto}}</td>
-                        <td style="width: 150px;">{{i.email}}</td>
-                        <td style="width: 150px;">{{i.message}}</td>
-                        <td>
-                <a href="#" onclick="aceptarTestimonio({{i.id}})" type="button" class="btn btn-success">
+                        <td style="width: 3cm;">{{i.name}}</td>
+                        <td style="width: 4cm;">{{i.asunto}}</td>
+                        <td style="width: 6cm;">{{i.email}}</td>
+                        <td style="width: 9cm;">{{i.message}}</td>
+                        <td style="width: 2cm;">
+                <a href="#" type="button" class="btn btn-success">
                     <i class="fas fa-check"></i>
                 </a>
-                <a href="#" onclick="eliminarTestimonio({{i.id}})" type="button" class="btn btn-danger">
+                <a href="#" type="button" class="btn btn-danger">
                     <i class="fas fa-trash-alt"></i>
                 </a>
                         </td>
@@ -70,46 +70,10 @@
   <script src="{% static 'datatable/jquery/jquery.min.js'%}"></script>
   <script type="text/javascript" src="{% static 'datatable/data_tables/datatables.min.js' %}"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-          <script>
+    <script>
      $(document).ready( function () {
             $('#myTable').DataTable();
     } );
-
-    function aceptarTestimonio(id){
-        Swal.fire({
-            "title": "Estas Seguro?",
-            "text": "Esta accion no se puede deshacer",
-            "icon": "question",
-            "showCancelButton": true,
-            "cancelButtonText": "No, Cancelar",
-            "confirmButtonText": "Si, Aceptar Testimonio",
-            "reverseButtons": true,
-            "confirmButtonColor": "#cc1417"
-                })
-            .then(function(result){
-                if (result.isConfirmed){
-                    window.location.href = "/aceptar_testimonio/"+id+"/"
-                }
-            })
-        }
-
-    function eliminarTestimonio(id){
-        Swal.fire({
-            "title": "Estas Seguro?",
-            "text": "Esta accion no se puede deshacer",
-            "icon": "question",
-            "showCancelButton": true,
-            "cancelButtonText": "No, Cancelar",
-            "confirmButtonText": "Si, Eliminar Testimonio",
-            "reverseButtons": true,
-            "confirmButtonColor": "#cc1417"
-                })
-            .then(function(result){
-                if (result.isConfirmed){
-                    window.location.href = "/eliminar_testimonio/"+id+"/"
-                }
-            })
-        }
-  </script>
+    </script>
 </body>
 </html>
