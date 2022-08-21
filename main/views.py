@@ -22,8 +22,11 @@ def index(request):
     if request.method == 'POST':
         form = ContactoForm(data=request.POST)
         if form.is_valid():
+            email=form.cleaned_data['email']
+            texto=form.cleaned_data['message']
             messages.success(request, "Gracias por contactarme")
             form.save()
+            send_emailC(email, texto)
             # send_email(form.cleaned_data['email'])
             return redirect(to='index')
         else:
@@ -87,7 +90,7 @@ def eliminarTestimonio(request,id):
     return redirect(to='listado_testimonios')
 
 ######funcion para enviar correos#######
-def send_email():
+def send_emailC(email,texto):
     try:
         mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
         print(mailServer.ehlo())
@@ -99,10 +102,12 @@ def send_email():
         email_to='yandivd@gmail.com'
 
         #construir el mensaje
-        mensaje= MIMEText("""Alguien ha dejado un testimonio acerca de ti""")
+        mensaje= MIMEText("""Alguien ha hecho contacto contigo a trves de myPortafolio. 
+        Entre al siguiente link para revisarlo: http://localhost:8000/listar/contactos/ """+
+                          "Correo: "+email+' '+texto )
         mensaje['From'] = settings.EMAIL_HOST_USER
         mensaje['To'] = email_to
-        mensaje['Subject'] = 'Testimonio en myPortafolio'
+        mensaje['Subject'] = 'Contacto en myPortafolio'
 
         mailServer.sendmail(settings.EMAIL_HOST_USER,email_to, mensaje.as_string())
         print("Correo enviado")
