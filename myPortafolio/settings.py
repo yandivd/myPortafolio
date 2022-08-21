@@ -141,4 +141,4 @@ EMAIL_PORT = 587
 
 EMAIL_HOST_USER = 'yandivd@gmail.com'
 
-EMAIL_HOST_PASSWORD = 'Seguios/25'
+EMAIL_HOST_PASSWORD = 'mazadjczhkwoadeo'
