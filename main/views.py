@@ -1,9 +1,10 @@
-from email.mime.text import MIMEText
-
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 import smtplib
+from email.mime.text import MIMEText
+
+from django.conf import settings
 
 from .models import *
 from .forms import *
@@ -59,12 +60,14 @@ class TestimonioCreateView(CreateView):
         print(image.values())
         estado="pending"
         if formulario.is_valid():
+            usuario=formulario.cleaned_data['nombre']
             testi = Testimoni(nombre=formulario.cleaned_data['nombre'],
                               ocupacion=formulario.cleaned_data['ocupacion'],
                               texto=formulario.cleaned_data['texto'],
                               image=image['image'],
                               estado=estado)
             testi.save()
+            send_email('Nuevo testimonio', usuario, 'http://localhost:8000/listar/testimonios/')
             messages.success(request, "Muchas gracias por compartir su testimonio, una vez sea revisado se hara publico")
             return redirect('index')
         else:
@@ -82,14 +85,51 @@ def eliminarTestimonio(request,id):
     print(testimonio)
     testimonio.delete()
     return redirect(to='listado_testimonios')
-#
-# def send_email(from1):
-#     mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
-#     mailServer.starttls()
-#     mailServer.ehlo()
-#     mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-#
-#     mensaje = MIMEText("""Mensaje""")
-#     mensaje['From'] = from1
-#     mensaje['To'] = 'yandivd@gmail.com'
-#     mensaje['Subject'] = 'Tienes un correo'
+
+######funcion para enviar correos#######
+def send_email():
+    try:
+        mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+        print(mailServer.ehlo())
+        mailServer.starttls()
+        print(mailServer.ehlo())
+        mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+        print('Conectado...')
+
+        email_to='yandivd@gmail.com'
+
+        #construir el mensaje
+        mensaje= MIMEText("""Alguien ha dejado un testimonio acerca de ti""")
+        mensaje['From'] = settings.EMAIL_HOST_USER
+        mensaje['To'] = email_to
+        mensaje['Subject'] = 'Testimonio en myPortafolio'
+
+        mailServer.sendmail(settings.EMAIL_HOST_USER,email_to, mensaje.as_string())
+        print("Correo enviado")
+
+    except Exception as e:
+        print(e)
+
+def send_email(asunto, usuario, link):
+    try:
+        mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+        print(mailServer.ehlo())
+        mailServer.starttls()
+        print(mailServer.ehlo())
+        mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+        print('Conectado...')
+
+        email_to='yandivd@gmail.com'
+
+        #construir el mensaje
+        mensaje= MIMEText(usuario+""" ha dejado un testimonio acerca de ti. Entre al siguiente
+                            link para acceder: """+ link)
+        mensaje['From'] = settings.EMAIL_HOST_USER
+        mensaje['To'] = email_to
+        mensaje['Subject'] = asunto
+
+        mailServer.sendmail(settings.EMAIL_HOST_USER,email_to, mensaje.as_string())
+        print("Correo enviado")
+
+    except Exception as e:
+        print(e)
