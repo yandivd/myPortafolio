@@ -132,3 +132,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media') #establecer directorio media como ra
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#enviar correo
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'yandivd@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'Seguios/25'

@@ -1,6 +1,9 @@
+from email.mime.text import MIMEText
+
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
+import smtplib
 
 from .models import *
 from .forms import *
@@ -20,6 +23,7 @@ def index(request):
         if form.is_valid():
             messages.success(request, "Gracias por contactarme")
             form.save()
+            # send_email(form.cleaned_data['email'])
             return redirect(to='index')
         else:
             data["form"] = form
@@ -78,3 +82,14 @@ def eliminarTestimonio(request,id):
     print(testimonio)
     testimonio.delete()
     return redirect(to='listado_testimonios')
+#
+# def send_email(from1):
+#     mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+#     mailServer.starttls()
+#     mailServer.ehlo()
+#     mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+#
+#     mensaje = MIMEText("""Mensaje""")
+#     mensaje['From'] = from1
+#     mensaje['To'] = 'yandivd@gmail.com'
+#     mensaje['Subject'] = 'Tienes un correo'
