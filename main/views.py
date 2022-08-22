@@ -104,7 +104,7 @@ def send_emailC(email,texto):
         #construir el mensaje
         mensaje= MIMEText("""Alguien ha hecho contacto contigo a trves de myPortafolio. 
         Entre al siguiente link para revisarlo: http://localhost:8000/listar/contactos/ """+
-                          "Correo: "+email+' '+texto )
+                          "Correo: "+email+'/n'+texto )
         mensaje['From'] = settings.EMAIL_HOST_USER
         mensaje['To'] = email_to
         mensaje['Subject'] = 'Contacto en myPortafolio'
