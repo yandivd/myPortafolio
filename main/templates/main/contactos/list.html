@@ -43,21 +43,15 @@
                         <th>Asunto</th>
                         <th>Correo</th>
                         <th>Texto</th>
-                        <th style="width: 3cm">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for i in object_list %}
                     <tr>
-                        <td style="width: 3cm;">{{i.name}}</td>
-                        <td style="width: 4cm;">{{i.asunto}}</td>
-                        <td style="width: 6cm;">{{i.email}}</td>
-                        <td style="width: 9cm;">{{i.message}}</td>
-                        <td style="width: 2cm;">
-                <a href="#" type="button" class="btn btn-success">
-                    <i class="fas fa-check"></i>Responder
-                </a>
-                        </td>
+                        <td style="width: 10%;">{{i.name}}</td>
+                        <td style="width: 20%;">{{i.asunto}}</td>
+                        <td style="width: 20%"><a href="mailto:{{i.email}}">{{i.email}}</a></td>x
+                        <td style="width: 50%;">{{i.message}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
