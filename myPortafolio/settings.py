@@ -167,9 +167,9 @@ STATIC_URL = '/static/'# Extra places for collectstatic to find static files.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #dropbox
-
-DROPBOX_OAUTH2_TOKEN = 'U14eIr9d8roAAAAAAAAAAXVs9MsVFg1pWLLo5NuxD5oYoqNKJvN1yo8qjYyH1hOi'
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-
-dbx = dropbox.Dropbox (DROPBOX_OAUTH2_TOKEN)
-DROPBOX_ROOT_PATH = '/media/'
+#
+# DROPBOX_OAUTH2_TOKEN = 'sl.BOKYY6Sg4RAcp5p9pX5Y5I87jB28JDzEOLyldnCtP7wCCFQExzkL2rr72rZl1Zu3-wO0AC4lGEBeUhPpm4qdSBS0mGX25PWSBDRxAGABdKypHhPSwE0bX6p0Fvf2re-SpbdOsdftUlIX'
+# DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+#
+# dbx = dropbox.Dropbox (DROPBOX_OAUTH2_TOKEN)
+# DROPBOX_ROOT_PATH = '/media/'
