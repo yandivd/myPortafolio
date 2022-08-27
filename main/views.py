@@ -70,7 +70,7 @@ class TestimonioCreateView(CreateView):
                               image=image['image'],
                               estado=estado)
             testi.save()
-            send_email('Nuevo testimonio en myPortafolio', usuario, 'http://localhost:8000/listar/testimonios/')
+            send_email('Nuevo testimonio en myPortafolio', usuario, 'http://yandivd.pythonanywhere.com/listar/testimonios/')
             messages.success(request, "Muchas gracias por compartir su testimonio, una vez sea revisado se hara publico")
             return redirect('index')
         else:
@@ -103,7 +103,7 @@ def send_emailC(email,texto):
 
         #construir el mensaje
         mensaje= MIMEText("""Alguien ha hecho contacto contigo a trves de myPortafolio. 
-        Entre al siguiente link para revisarlo: http://localhost:8000/listar/contactos/ """+
+        Entre al siguiente link para revisarlo: http://yandivd.pythonanywhere.com/listar/contactos/ """+
                           "Correo: "+email+' '+texto )
         mensaje['From'] = settings.EMAIL_HOST_USER
         mensaje['To'] = email_to
