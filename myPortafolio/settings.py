@@ -156,7 +156,7 @@ EMAIL_PORT = 587
 
 EMAIL_HOST_USER = 'ventrepise@gmail.com'
 
-EMAIL_HOST_PASSWORD = 'Seguimos/25'
+EMAIL_HOST_PASSWORD = 'hvnmcvhnowxfyhmd'
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
