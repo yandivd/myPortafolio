@@ -154,7 +154,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = 'yandivd@gmail.com'
+EMAIL_HOST_USER = 'ventrepise@gmail.com'
 
 EMAIL_HOST_PASSWORD = 'Seguimos/25'
 
