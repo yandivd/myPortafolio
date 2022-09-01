@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 import smtplib
 from email.mime.text import MIMEText
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from django.conf import settings
 
@@ -39,6 +41,10 @@ class TestListView(ListView):
     model = Testimoni
     template_name = 'main/testimonios/list.html'
 
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request,*args,** kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -49,6 +55,10 @@ class TestListView(ListView):
 class ContactoListView(ListView):
     model = Contacto
     template_name = 'main/contactos/list.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request,*args,** kwargs)
 
 class TestimonioCreateView(CreateView):
     model = Testimoni
