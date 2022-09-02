@@ -11,6 +11,8 @@ urlpatterns = [
 
     path('aceptar_testimonio/<id>/', aceptarTestimonio, name='aceptar_testimonio'),
     path('eliminar_testimonio/<id>/', eliminarTestimonio, name='eliminar_testimonio'),
+
+    path('login/', include('login.urls')),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
