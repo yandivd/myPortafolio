@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os.path
 from pathlib import Path
 import os
-import dropbox
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
